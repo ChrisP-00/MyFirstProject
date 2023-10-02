@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Cube : MonoBehaviour
@@ -30,10 +31,16 @@ public class Cube : MonoBehaviour
     private Vector3 moveDir;
     private Vector3 lookDir;
 
+    // for the test 
+    [SerializeField] TextMeshProUGUI playerHPText;
+    [SerializeField] int playerHP; 
 
     // Start is called before the first frame update
     void Start()
     {
+        playerHP = 1000;
+        playerHPText.text = $"Player HP : {playerHP}";
+
         myCC = GetComponent<CharacterController>();
         forward = Camera.main.transform.forward;
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
@@ -93,7 +100,12 @@ public class Cube : MonoBehaviour
     }
 
 
+    public void applyDamage(int damage)
+    {
+        playerHP -= damage;
 
+        playerHPText.text = $"Player HP : {playerHP}";
+    }
 
 
     Collider lastCollidesObject = null;
