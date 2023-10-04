@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 8
   attackSpeed: 1
+  damage: 10
   hp: 1
